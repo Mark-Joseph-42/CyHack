@@ -1,0 +1,463 @@
+<!DOCTYPE html><html class="h-full bg-surface" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>BrokerDesk Pro — AI Lead Underwriting Dashboard</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Hanken Grotesk & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Exact Tailwind Theme Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed-dim": "#ffb77d",
+            "outline-variant": "#c1c8c4",
+            "primary-container": "#0f2922",
+            "on-primary-fixed": "#052019",
+            "on-secondary-fixed": "#002113",
+            "on-primary-fixed-variant": "#324c44",
+            "on-tertiary-container": "#d37300",
+            "on-secondary": "#ffffff",
+            "surface-container-low": "#f2f3ff",
+            "on-background": "#131b2e",
+            "surface-dim": "#d2d9f4",
+            "surface": "#faf8ff",
+            "tertiary-container": "#3c1c00",
+            "surface-container-lowest": "#ffffff",
+            "on-surface-variant": "#424845",
+            "tertiary-fixed": "#ffdcc3",
+            "secondary-container": "#6cf8bb",
+            "error": "#ba1a1a",
+            "on-secondary-container": "#00714d",
+            "tertiary": "#1d0a00",
+            "surface-tint": "#4a645b",
+            "primary-fixed": "#cce9de",
+            "on-primary-container": "#769188",
+            "on-error-container": "#93000a",
+            "inverse-surface": "#283044",
+            "on-tertiary": "#ffffff",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed-variant": "#005236",
+            "surface-container-highest": "#dae2fd",
+            "outline": "#727975",
+            "surface-variant": "#dae2fd",
+            "secondary-fixed-dim": "#4edea3",
+            "background": "#faf8ff",
+            "on-tertiary-fixed-variant": "#6e3900",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "primary": "#00130d",
+            "on-tertiary-fixed": "#2f1500",
+            "surface-bright": "#faf8ff",
+            "inverse-on-surface": "#eef0ff",
+            "secondary-fixed": "#6ffbbe",
+            "secondary": "#006c49",
+            "surface-container-high": "#e2e7ff",
+            "inverse-primary": "#b0cdc2",
+            "primary-fixed-dim": "#b0cdc2",
+            "on-surface": "#131b2e",
+            "surface-container": "#eaedff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "gutter": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin": "2rem",
+            "gutter-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-xl": "2.5rem"
+          },
+          "fontFamily": {
+            "display-hero": ["Hanken Grotesk"],
+            "headline-sm": ["Hanken Grotesk"],
+            "headline-lg": ["Hanken Grotesk"],
+            "display-hero-mobile": ["Hanken Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "headline-md": ["Hanken Grotesk"],
+            "label-mono-sm": ["JetBrains Mono"],
+            "body-sm": ["Hanken Grotesk"],
+            "headline-lg-mobile": ["Hanken Grotesk"],
+            "metric-xl": ["Hanken Grotesk"],
+            "label-mono-md": ["JetBrains Mono"]
+          },
+          "fontSize": {
+            "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "600" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-mono-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "metric-xl": ["40px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "label-mono-md": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #faf8ff;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #c1c8c4;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #727975;
+    }
+  </style>
+</head>
+<body class="h-full flex flex-col font-body-md text-on-surface antialiased bg-surface overflow-x-hidden selection:bg-secondary selection:text-on-secondary vc-init">
+<!-- TOP DISCOVERY RETURN NOTIFICATION BANNER -->
+<aside aria-label="Discovery View Notice" class="w-full bg-primary-container text-on-primary-fixed border-b border-primary-container px-space-md py-1.5 flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-space-sm mx-auto md:mx-0">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary-fixed animate-ping"></span>
+<span class="font-label-mono-sm text-label-mono-sm uppercase text-secondary-fixed">System Active</span>
+<span class="text-on-primary-container hidden sm:inline">|</span>
+<span class="text-on-primary-fixed">Real Estate Underwriting Core v4.19 active. Live inbound parser synced.</span>
+</div>
+<a class="hidden md:flex items-center gap-1 font-label-mono-sm text-label-mono-sm text-secondary-fixed hover:text-white transition-colors duration-150" href="buyer.html">
+<span class="">← Switch to Buyer Discovery View</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</aside>
+<!-- SHARED TOP APP BAR (TopNavBar Anchor from JSON) -->
+<header class="bg-surface-container-lowest dark:bg-surface-container-low shadow-sm border-b border-outline-variant z-30 sticky top-0">
+<div class="flex justify-between items-center w-full px-space-lg h-16 max-w-full">
+<!-- Brand & Left Controls -->
+<div class="flex items-center gap-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-secondary-fixed border border-primary-container">
+<span class="material-symbols-outlined text-xl" data-icon="domain" style="font-variation-settings: &quot;FILL&quot; 1;">domain</span>
+</div>
+<div>
+<div class="text-headline-sm font-headline-sm font-bold tracking-tight text-primary dark:text-inverse-primary leading-tight">
+              BrokerDesk Pro
+            </div>
+<div class="font-label-mono-sm text-label-mono-sm text-outline">
+              PRIMEESTATES PRO SUITE
+            </div>
+</div>
+</div>
+<!-- Global Search Bar with Hotkey -->
+<div class="hidden lg:flex items-center relative w-72">
+<span class="material-symbols-outlined absolute left-3 text-outline text-lg pointer-events-none" data-icon="search">search</span>
+<input class="w-full pl-9 pr-12 py-1.5 bg-surface-container-low border border-outline-variant rounded-lg text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" placeholder="Search leads, escrow, properties..." type="text">
+<kbd class="absolute right-2.5 px-1.5 py-0.5 text-label-mono-sm font-label-mono-sm bg-surface-container-lowest border border-outline-variant rounded text-on-surface-variant shadow-xs">⌘K</kbd>
+</div>
+</div>
+<!-- Live KPI Chips (Realtime Underwriting Telemetry) -->
+<div class="hidden xl:flex items-center gap-space-sm">
+<!-- Hot Leads -->
+<!-- In Negotiation -->
+<!-- Filtered Saved Time -->
+<!-- Qualification Latency -->
+</div>
+<!-- Trailing Quick Actions & Executive Profile -->
+<div class="flex items-center gap-space-sm">
+
+<div class="h-6 w-px bg-outline-variant mx-1 hidden sm:block"></div>
+<!-- Notification & Utility Icons -->
+<div class="flex items-center">
+<button aria-label="Notifications" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-colors relative">
+<span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button aria-label="Settings" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="tune">tune</span>
+</button>
+</div>
+<!-- Profile Avatar Badge -->
+<div class="flex items-center gap-2 pl-2 border-l border-outline-variant">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-fixed border border-secondary flex items-center justify-center font-bold font-label-mono-sm text-label-mono-sm">
+            ER
+          </div>
+<div class="hidden 2xl:block text-left">
+<div class="text-body-sm font-body-sm font-semibold text-primary leading-tight">Elena Rostova</div>
+<div class="text-label-mono-sm font-label-mono-sm text-outline text-[10px]">Senior Partner</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- WORKSPACE BODY WITH DOCKED SIDENAVBAR -->
+<div class="flex flex-1 overflow-hidden">
+<!-- LEFT NAVIGATION RAIL (SideNavBar from JSON) -->
+
+<!-- MAIN INTERACTIVE CANVAS -->
+<main class="flex-1 flex flex-col md:flex-row overflow-hidden bg-surface-container-low min-h-0"><section aria-label="Client Pipeline Directory" class="w-full md:w-96 flex flex-col border-r border-outline-variant bg-surface-container-lowest shrink-0"><div class="p-space-md border-b border-outline-variant space-y-3"><div class="flex items-center justify-between"><div class="flex items-center gap-2"><h1 class="text-headline-sm font-headline-sm text-primary font-bold">Lead Directory</h1><span class="px-2 py-0.5 bg-secondary-container/40 text-on-secondary-container border border-secondary text-[11px] font-label-mono-sm font-bold rounded">20 Active</span></div><span class="flex items-center gap-1 text-[11px] font-label-mono-sm text-secondary font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>Live AI</span></div><div class="relative"><span class="material-symbols-outlined absolute left-2.5 top-2 text-outline text-base pointer-events-none" data-icon="search">search</span><input class="w-full pl-8 pr-3 py-1.5 bg-surface-container-low border border-outline-variant rounded-lg text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" placeholder="Filter leads, properties, budget..." type="text"></div><div class="flex items-center gap-1.5 overflow-x-hidden text-[11px] font-label-mono-sm"><button class="px-2.5 py-1 bg-primary text-on-primary rounded font-bold shadow-xs">All (20)</button><button class="px-2.5 py-1 bg-surface-container-low text-on-surface-variant hover:bg-surface-container rounded border border-outline-variant/70 font-medium transition-colors">Call-Up (8)</button><button class="px-2.5 py-1 bg-surface-container-low text-on-surface-variant hover:bg-surface-container rounded border border-outline-variant/70 font-medium transition-colors">Negotiate (6)</button></div></div><div class="flex-1 overflow-y-auto custom-scrollbar divide-y divide-outline-variant/50"><div class="p-3 bg-secondary-container/15 border-l-4 border-secondary cursor-pointer relative transition-colors"><div class="flex items-start justify-between gap-1"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-secondary shrink-0"></span><span class="text-body-md font-body-md font-bold text-primary">Marcus Vance</span></div><span class="px-1.5 py-0.5 bg-secondary text-on-secondary rounded text-[10px] font-label-mono-sm font-bold uppercase tracking-wider">CALL_UP · 95</span></div><div class="text-body-sm font-body-sm text-primary font-medium mt-1 truncate flex items-center gap-1"><span class="material-symbols-outlined text-xs text-outline" data-icon="apartment">apartment</span>Skyline Penthouse 4402</div><div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant mt-0.5"><span class="font-label-mono-sm text-secondary font-bold text-xs">$850,000</span><span class="text-[11px] text-outline font-label-mono-sm">2m ago</span></div><div class="flex items-center gap-1.5 mt-2 flex-wrap"><span class="px-1.5 py-0.2 bg-surface-container-low text-on-surface text-[10px] font-label-mono-sm rounded border border-outline-variant/60">&lt;30 Days</span><span class="px-1.5 py-0.2 bg-surface-container-low text-secondary text-[10px] font-label-mono-sm rounded border border-outline-variant/60 font-semibold">Pre-Approved</span><span class="px-1.5 py-0.2 bg-surface-container-low text-on-surface-variant text-[10px] font-label-mono-sm rounded border border-outline-variant/60">FinTech Exec</span></div></div><div class="p-3 hover:bg-surface-container cursor-pointer transition-colors"><div class="flex items-start justify-between gap-1"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-secondary shrink-0"></span><span class="text-body-md font-body-md font-semibold text-primary">Liam Thorne</span></div><span class="px-1.5 py-0.5 bg-secondary-container/40 text-on-secondary-container border border-secondary rounded text-[10px] font-label-mono-sm font-bold uppercase tracking-wider">CALL_UP · 92</span></div><div class="text-body-sm font-body-sm text-on-surface-variant mt-1 truncate flex items-center gap-1"><span class="material-symbols-outlined text-xs text-outline" data-icon="home">home</span>Garden Townhouse</div><div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant mt-0.5"><span class="font-label-mono-sm text-secondary font-semibold text-xs">$420,000</span><span class="text-[11px] text-outline font-label-mono-sm">18m ago</span></div><div class="flex items-center gap-1.5 mt-2 flex-wrap"><span class="px-1.5 py-0.2 bg-surface-container text-on-surface text-[10px] font-label-mono-sm rounded">&lt;30 Days</span><span class="px-1.5 py-0.2 bg-surface-container text-secondary text-[10px] font-label-mono-sm rounded font-medium">Cash Verified</span></div></div><div class="p-3 hover:bg-surface-container cursor-pointer transition-colors"><div class="flex items-start justify-between gap-1"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim shrink-0"></span><span class="text-body-md font-body-md font-semibold text-primary">Sarah Chen</span></div><span class="px-1.5 py-0.5 bg-tertiary-fixed/30 text-tertiary-container border border-tertiary-fixed-dim rounded text-[10px] font-label-mono-sm font-bold uppercase tracking-wider">NEGOTIATE · 85</span></div><div class="text-body-sm font-body-sm text-on-surface-variant mt-1 truncate flex items-center gap-1"><span class="material-symbols-outlined text-xs text-outline" data-icon="villa">villa</span>Waterfront Villa 12B</div><div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant mt-0.5"><span class="font-label-mono-sm text-tertiary-container font-semibold text-xs">$1,250,000</span><span class="text-[11px] text-outline font-label-mono-sm">45m ago</span></div><div class="flex items-center gap-1.5 mt-2 flex-wrap"><span class="px-1.5 py-0.2 bg-surface-container text-error text-[10px] font-label-mono-sm rounded font-medium">-4.0% Gap</span><span class="px-1.5 py-0.2 bg-surface-container text-on-surface text-[10px] font-label-mono-sm rounded">60d Close</span></div></div><div class="p-3 hover:bg-surface-container cursor-pointer transition-colors"><div class="flex items-start justify-between gap-1"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim shrink-0"></span><span class="text-body-md font-body-md font-semibold text-primary">David Miller</span></div><span class="px-1.5 py-0.5 bg-tertiary-fixed/30 text-tertiary-container border border-tertiary-fixed-dim rounded text-[10px] font-label-mono-sm font-bold uppercase tracking-wider">NEGOTIATE · 78</span></div><div class="text-body-sm font-body-sm text-on-surface-variant mt-1 truncate flex items-center gap-1"><span class="material-symbols-outlined text-xs text-outline" data-icon="domain">domain</span>Family Townhouse</div><div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant mt-0.5"><span class="font-label-mono-sm text-tertiary-container font-semibold text-xs">$550,000</span><span class="text-[11px] text-outline font-label-mono-sm">2h ago</span></div><div class="flex items-center gap-1.5 mt-2 flex-wrap"><span class="px-1.5 py-0.2 bg-surface-container text-error text-[10px] font-label-mono-sm rounded font-medium">-7.2% Gap</span><span class="px-1.5 py-0.2 bg-surface-container text-on-surface text-[10px] font-label-mono-sm rounded">Lease Contingent</span></div></div></div><div class="p-2.5 bg-surface-container-low border-t border-outline-variant flex items-center justify-between text-xs text-outline"><span class="font-label-mono-sm">Showing 5 of 20</span><span class="font-label-mono-sm text-secondary font-semibold">Sorted by Score</span></div></section><section aria-label="Client Dossier &amp; AI Intelligence Detail" class="flex-1 flex flex-col overflow-hidden bg-surface-container-lowest"><header class="p-space-md border-b border-outline-variant bg-surface-container-lowest flex flex-wrap items-center justify-between gap-3 shrink-0"><div class="flex items-center gap-3"><div><div class="flex items-center gap-2"><h2 class="text-headline-md font-headline-md text-primary font-bold">Marcus Vance</h2><span class="px-2 py-0.5 bg-secondary text-on-secondary rounded text-label-mono-sm font-label-mono-sm font-bold">QUALIFIED 95/100</span><span class="px-2 py-0.5 bg-secondary-container/40 text-on-secondary-container border border-secondary rounded text-label-mono-sm font-label-mono-sm font-bold">ACTION: CALL_UP</span></div><div class="flex items-center gap-3 text-body-sm font-body-sm text-on-surface-variant mt-1"><a class="hover:text-primary transition-colors flex items-center gap-1" href="mailto:marcus.vance@example.com"><span class="material-symbols-outlined text-sm text-outline" data-icon="mail">mail</span>marcus.vance@example.com</a><span class="text-outline">•</span><a class="font-label-mono-sm text-secondary font-bold hover:underline flex items-center gap-1" href="tel:+15550192"><span class="material-symbols-outlined text-sm text-secondary" data-icon="call">call</span>+1 (555) 0192 (Direct Cell)</a><span class="text-outline">•</span><span class="text-label-mono-sm text-outline">CASE #LD-89412</span></div></div></div><div class="flex items-center gap-2"><a class="flex items-center gap-1.5 bg-secondary text-on-secondary hover:bg-secondary/90 px-3 py-1.5 rounded-lg font-body-sm text-body-sm font-bold shadow-xs active:scale-[0.98] transition-all" href="tel:+15550192"><span class="material-symbols-outlined text-base" data-icon="call">call</span>Call Now</a><a class="flex items-center gap-1.5 bg-surface-container-lowest border border-outline-variant hover:bg-surface-container text-primary px-3 py-1.5 rounded-lg font-body-sm text-body-sm font-semibold transition-colors" href="mailto:marcus.vance@example.com"><span class="material-symbols-outlined text-base" data-icon="mail">mail</span>Send Email</a></div></header><div class="flex-1 overflow-y-auto custom-scrollbar p-space-md space-y-space-md"><div class="p-3.5 border border-outline-variant rounded-xl bg-surface-container-low flex flex-col md:flex-row md:items-center justify-between gap-4"><div class="flex items-center gap-3"><div class="w-12 h-12 rounded-lg bg-primary-container text-secondary-fixed flex items-center justify-center shrink-0 border border-primary"><span class="material-symbols-outlined text-2xl" data-icon="apartment">apartment</span></div><div><div class="text-label-mono-sm font-label-mono-sm text-outline uppercase">Matched Target Property</div><div class="text-headline-sm font-headline-sm text-base text-primary font-bold">Luxury 3BHK Skyline Penthouse (Unit 4402)</div><div class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-2 mt-0.5"><span class="">Financial Core District</span><span class="">•</span><span class="">3 Bed / 3.5 Bath</span><span class="">•</span><span class="">2,450 sq ft</span></div></div></div><div class="flex items-center gap-4 border-t md:border-t-0 md:border-l border-outline-variant pt-2 md:pt-0 md:pl-4"><div class="text-left md:text-right"><div class="text-label-mono-sm font-label-mono-sm text-outline">LISTING ASKING</div><div class="text-headline-sm font-headline-sm text-secondary font-bold">$850,000</div></div><div class="text-left md:text-right"><div class="text-label-mono-sm font-label-mono-sm text-outline">BUYER BUDGET CAP</div><div class="text-headline-sm font-headline-sm text-primary font-bold">$900,000</div><div class="text-[10px] text-secondary font-label-mono-sm">+$50k Headroom</div></div></div></div><div><h3 class="text-headline-sm font-headline-sm text-sm text-primary font-bold uppercase tracking-wider mb-2 flex items-center gap-1.5"><span class="material-symbols-outlined text-secondary text-base" data-icon="analytics">analytics</span>Structured Lead Intelligence</h3><div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5"><div class="p-2.5 bg-surface-container-low rounded-lg border border-outline-variant/70"><div class="text-[10px] font-label-mono-sm text-outline uppercase">Budget Bracket</div><div class="font-bold text-primary text-body-sm">$800,000 – $900,000</div><div class="text-[10px] text-secondary font-label-mono-sm mt-0.5">Verified Liquid &amp; Financed</div></div><div class="p-2.5 bg-surface-container-low rounded-lg border border-outline-variant/70"><div class="text-[10px] font-label-mono-sm text-outline uppercase">Urgency Timeline</div><div class="font-bold text-primary text-body-sm">&lt; 30 Days (Acute)</div><div class="text-[10px] text-secondary font-label-mono-sm mt-0.5">FinTech VP Relocation</div></div><div class="p-2.5 bg-surface-container-low rounded-lg border border-outline-variant/70"><div class="text-[10px] font-label-mono-sm text-outline uppercase">Variance Cap</div><div class="font-bold text-primary text-body-sm">0.0% / Zero Risk</div><div class="text-[10px] text-secondary font-label-mono-sm mt-0.5">Asking fully covered</div></div></div></div><div class="p-3 bg-secondary-container/20 border-l-4 border-secondary rounded-r-lg text-body-sm font-body-sm"><div class="flex items-center gap-1.5 text-on-secondary-container font-bold text-xs uppercase tracking-wide mb-1"><span class="material-symbols-outlined text-sm" data-icon="psychology">psychology</span>AI Underwriting Rationale</div><p class="italic text-on-surface leading-relaxed text-body-sm">“Buyer's verified budget fully covers the $850,000 asking price with zero financing contingency. Timeline is acute (&lt; 30 days) due to corporate relocation from London. Immediate phone call guarantees broker exclusivity before competitive outreach.”</p><div class="mt-2 pt-1.5 border-t border-secondary/30 flex items-center justify-between text-label-mono-sm font-label-mono-sm text-outline"><span class="">CONFIDENCE FACTOR: 0.984</span><span class="text-secondary font-bold">RECOMMENDATION: CALL_UP WITHIN 15 MIN</span></div></div><div><div class="flex items-center justify-between mb-2"><h3 class="text-headline-sm font-headline-sm text-sm text-primary font-bold uppercase tracking-wider flex items-center gap-1.5"><span class="material-symbols-outlined text-outline text-base" data-icon="forum">forum</span>Full AI Concierge Transcript</h3><span class="text-label-mono-sm font-label-mono-sm text-outline">Synced Today · 09:14 AM EST</span></div><div class="space-y-2.5 p-3 bg-surface-container-low rounded-xl border border-outline-variant/80 text-body-sm font-body-sm max-h-72 overflow-y-auto custom-scrollbar"><div class="flex items-start gap-2.5"><div class="w-6 h-6 rounded bg-primary text-secondary-fixed flex items-center justify-center shrink-0 text-xs font-bold">AI</div><div class="bg-surface-container-lowest p-2 rounded-lg border border-outline-variant/60 max-w-[85%]"><div class="text-[10px] text-outline font-label-mono-sm mb-0.5">09:14:02 AM · AI Intake Bot</div><p class="">Hello Marcus, welcome to PrimeEstates Pro. Are you looking to acquire Skyline Penthouse 4402 for personal residence or portfolio holding?</p></div></div><div class="flex items-start gap-2.5 justify-end"><div class="bg-primary text-on-primary p-2 rounded-lg max-w-[85%] text-right"><div class="text-[10px] text-secondary-fixed font-label-mono-sm mb-0.5">09:14:38 AM · Marcus Vance</div><p class="text-left">Personal residence. I'm relocating for a new FinTech managing director role. My target purchase range is $800k to $900k maximum.</p></div><div class="w-6 h-6 rounded bg-secondary text-on-secondary flex items-center justify-center shrink-0 text-xs font-bold">MV</div></div><div class="flex items-start gap-2.5"><div class="w-6 h-6 rounded bg-primary text-secondary-fixed flex items-center justify-center shrink-0 text-xs font-bold">AI</div><div class="bg-surface-container-lowest p-2 rounded-lg border border-outline-variant/60 max-w-[85%]"><div class="text-[10px] text-outline font-label-mono-sm mb-0.5">09:15:10 AM · AI Intake Bot</div><p class="">Noted. Skyline Penthouse is listed at $850k. What is your required closing timeline and financing readiness?</p></div></div><div class="flex items-start gap-2.5 justify-end"><div class="bg-primary text-on-primary p-2 rounded-lg max-w-[85%] text-right"><div class="text-[10px] text-secondary-fixed font-label-mono-sm mb-0.5">09:15:45 AM · Marcus Vance</div><p class="text-left">I need keys inside 30 days before my start date. I hold an underwritten pre-approval from First Capital Bank for $900k. I can tour anytime today after 2 PM.</p></div><div class="w-6 h-6 rounded bg-secondary text-on-secondary flex items-center justify-center shrink-0 text-xs font-bold">MV</div></div><div class="flex items-center justify-center py-1"><span class="px-2 py-0.5 bg-secondary-container/40 text-on-secondary-container border border-secondary rounded text-[10px] font-label-mono-sm font-bold flex items-center gap-1"><span class="material-symbols-outlined text-xs" data-icon="verified">verified</span>Verification Milestone: Financial Solvency &amp; Urgency Confirmed</span></div></div></div></div><footer class="p- space-md p-3 border-t border-outline-variant bg-surface-container-lowest flex items-center justify-between gap-3 shrink-0"><div class="flex items-center gap-2 flex-1"><span class="material-symbols-outlined text-outline text-lg" data-icon="edit_note">edit_note</span><input class="w-full px-3 py-1.5 bg-surface-container-low border border-outline-variant rounded-lg text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary" placeholder="Add internal broker underwriting note or prep talking point..." type="text"></div><div class="flex items-center gap-2 shrink-0"><button class="px-3 py-1.5 bg-surface-container-low hover:bg-surface-container border border-outline-variant rounded-lg font-body-sm text-body-sm font-medium transition-colors">Save Note</button><button class="px-3 py-1.5 bg-secondary text-on-secondary hover:bg-secondary/90 rounded-lg font-body-sm text-body-sm font-bold shadow-xs transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>Schedule Tour</button></div></footer></section></main>
+</div>
+<!-- SLIDE-OVER MODAL / SIDE PANEL: "LEAD DOSSIER: Marcus Vance" -->
+<!-- INLINE VANILLA JAVASCRIPT FOR MODAL & COLLAPSIBLE INTERACTIONS -->
+<script>
+    // Collapsible Discarded Queue Logic
+    function toggleDiscardedQueue() {
+      const content = document.getElementById('discarded-content');
+      const chevron = document.getElementById('discarded-chevron');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        chevron.style.transform = 'rotate(0deg)';
+      } else {
+        content.classList.add('hidden');
+        chevron.style.transform = 'rotate(-90deg)';
+      }
+    }
+
+    // Modal Visibility Logic
+    function openDossierModal() {
+      const overlay = document.getElementById('dossier-modal-overlay');
+      overlay.classList.remove('hidden');
+      overlay.classList.add('flex');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeDossierModal() {
+      const overlay = document.getElementById('dossier-modal-overlay');
+      overlay.classList.add('hidden');
+      overlay.classList.remove('flex');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    function markContacted() {
+      alert("Marcus Vance marked as Contacted. Moved into Active Escrow pipeline with priority flag.");
+      closeDossierModal();
+    }
+
+    // Hotkey listener for CMD+K
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('input[type="text"]');
+        if (searchInput) searchInput.focus();
+      }
+      if (e.key === 'Escape') {
+        closeDossierModal();
+      }
+    });
+
+    // Close modal on outside click
+    document.getElementById('dossier-modal-overlay').addEventListener('click', (e) => {
+      if (e.target.id === 'dossier-modal-overlay') {
+        closeDossierModal();
+      }
+    });
+  </script>
+
+
+
+<script>
+// =====================================================================
+// Real-Time API Integration for BrokerDesk Pro Dashboard
+// =====================================================================
+const API_BASE = window.location.origin.includes('http') ? '' : 'http://127.0.0.1:8000';
+let allLeads = [];
+let currentFilter = 'ALL'; // ALL, CALL_UP, NEGOTIATE
+let selectedLeadId = 1;
+
+async function loadBrokerData() {
+  try {
+    const res = await fetch(`${API_BASE}/api/leads`);
+    if (res.ok) {
+      allLeads = await res.json();
+      renderLeadDirectory();
+      if (allLeads.length > 0) {
+        selectLead(allLeads[0].id);
+      }
+    }
+  } catch (err) {
+    console.warn('API connection failed, falling back to static:', err);
+  }
+}
+
+function renderLeadDirectory() {
+  const listContainer = document.querySelector('.flex-1.overflow-y-auto.custom-scrollbar.divide-y');
+  if (!listContainer || !allLeads) return;
+
+  const filtered = allLeads.filter(l => {
+    if (currentFilter === 'ALL') return true;
+    return l.qualification && l.qualification.next_action === currentFilter;
+  });
+
+  listContainer.innerHTML = filtered.map(lead => {
+    const q = lead.qualification || {};
+    const action = q.next_action || 'AMBIGUOUS';
+    const score = q.qualification_score !== undefined ? Math.round(q.qualification_score) : 50;
+    const isSelected = lead.id === selectedLeadId;
+    const isCallUp = action === 'CALL_UP';
+    const badgeColor = isCallUp ? 'bg-secondary text-on-secondary' : 'bg-tertiary-fixed/30 text-tertiary-container border border-tertiary-fixed-dim';
+    const dotColor = isCallUp ? 'bg-secondary' : 'bg-tertiary-fixed-dim';
+    const propTitle = (q.matched_property && q.matched_property.title) || 'General Portfolio';
+    const propPrice = (q.matched_property && q.matched_property.price) ? `$${q.matched_property.price.toLocaleString()}` : '$850,000';
+
+    return `
+      <div onclick="selectLead(${lead.id})" class="p-3 ${isSelected ? 'bg-secondary-container/15 border-l-4 border-secondary' : 'hover:bg-surface-container'} cursor-pointer relative transition-colors">
+        <div class="flex items-start justify-between gap-1">
+          <div class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full ${dotColor} shrink-0"></span>
+            <span class="text-body-md font-body-md font-bold text-primary">${lead.name}</span>
+          </div>
+          <span class="px-1.5 py-0.5 ${badgeColor} rounded text-[10px] font-label-mono-sm font-bold uppercase tracking-wider">
+            ${action} · ${score}
+          </span>
+        </div>
+        <div class="text-body-sm font-body-sm text-primary font-medium mt-1 truncate flex items-center gap-1">
+          <span class="material-symbols-outlined text-xs text-outline">apartment</span>
+          ${propTitle}
+        </div>
+        <div class="flex items-center justify-between text-body-sm text-on-surface-variant mt-0.5">
+          <span class="font-label-mono-sm text-secondary font-bold text-xs">${propPrice}</span>
+          <span class="text-[11px] text-outline font-label-mono-sm">Verified</span>
+        </div>
+        <div class="flex items-center gap-1.5 mt-2 flex-wrap">
+          <span class="px-1.5 py-0.2 bg-surface-container-low text-on-surface text-[10px] font-label-mono-sm rounded border border-outline-variant/60">
+            ${q.timeline_months ? `< ${q.timeline_months * 30} Days` : 'Urgent'}
+          </span>
+          <span class="px-1.5 py-0.2 bg-surface-container-low text-secondary text-[10px] font-label-mono-sm rounded border border-outline-variant/60 font-semibold">
+            ${lead.status}
+          </span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function selectLead(leadId) {
+  selectedLeadId = leadId;
+  renderLeadDirectory();
+
+  const lead = allLeads.find(l => l.id === leadId);
+  if (!lead) return;
+
+  const q = lead.qualification || {};
+  const prop = q.matched_property || {};
+
+  // Header updates
+  const nameEl = document.querySelector('section[aria-label*="Client Dossier"] h2');
+  if (nameEl) nameEl.textContent = lead.name;
+
+  const scoreBadge = document.querySelector('section[aria-label*="Client Dossier"] .bg-secondary.text-on-secondary.rounded');
+  if (scoreBadge) scoreBadge.textContent = `${lead.status} ${Math.round(q.qualification_score || 0)}/100`;
+
+  const actionBadge = document.querySelector('section[aria-label*="Client Dossier"] .bg-secondary-container\\/40');
+  if (actionBadge) actionBadge.textContent = `ACTION: ${q.next_action || 'UNDERWRITING'}`;
+
+  // Contact links
+  const emailLink = document.querySelector('a[href^="mailto:"]');
+  if (emailLink) {
+    emailLink.href = `mailto:${lead.email || 'lead@example.com'}`;
+    emailLink.textContent = lead.email || 'lead@example.com';
+  }
+
+  const phoneLink = document.querySelector('a[href^="tel:"]');
+  if (phoneLink) {
+    const phone = lead.phone || '+1 (555) 0192';
+    phoneLink.href = `tel:${phone}`;
+    phoneLink.textContent = `${phone} (Direct Cell)`;
+  }
+
+  // Matched property
+  const propTitleEl = document.querySelector('section[aria-label*="Client Dossier"] .text-headline-sm.text-base');
+  if (propTitleEl) propTitleEl.textContent = prop.title || 'Portfolio Inquiry';
+
+  const askingEl = document.querySelectorAll('section[aria-label*="Client Dossier"] .text-headline-sm.font-bold')[1];
+  if (askingEl && prop.price) askingEl.textContent = `$${prop.price.toLocaleString()}`;
+
+  const budgetEl = document.querySelectorAll('section[aria-label*="Client Dossier"] .text-headline-sm.font-bold')[2];
+  if (budgetEl && q.budget_max) budgetEl.textContent = `$${q.budget_max.toLocaleString()}`;
+
+  // AI Reasoning
+  const rationaleEl = document.querySelector('section[aria-label*="Client Dossier"] p.italic');
+  if (rationaleEl && q.decision_reasoning) {
+    rationaleEl.textContent = `“${q.decision_reasoning}”`;
+  }
+
+  // Conversation transcripts
+  const chatContainer = document.querySelector('section[aria-label*="Client Dossier"] .space-y-2\\.5');
+  if (chatContainer && lead.conversation_logs) {
+    chatContainer.innerHTML = lead.conversation_logs.map(log => {
+      const isAi = log.sender === 'AI Agent' || log.sender === 'AI';
+      if (isAi) {
+        return `
+          <div class="flex items-start gap-2.5">
+            <div class="w-6 h-6 rounded bg-primary text-secondary-fixed flex items-center justify-center shrink-0 text-xs font-bold">AI</div>
+            <div class="bg-surface-container-lowest p-2 rounded-lg border border-outline-variant/60 max-w-[85%]">
+              <div class="text-[10px] text-outline font-label-mono-sm mb-0.5">AI Concierge</div>
+              <p class="text-body-sm">${log.message_text}</p>
+            </div>
+          </div>
+        `;
+      } else {
+        return `
+          <div class="flex items-start gap-2.5 justify-end">
+            <div class="bg-primary text-on-primary p-2 rounded-lg max-w-[85%] text-right">
+              <div class="text-[10px] text-secondary-fixed font-label-mono-sm mb-0.5">${lead.name}</div>
+              <p class="text-left text-body-sm">${log.message_text}</p>
+            </div>
+            <div class="w-6 h-6 rounded bg-secondary text-on-secondary flex items-center justify-center shrink-0 text-xs font-bold">
+              ${lead.name.split(' ').map(n => n[0]).join('')}
+            </div>
+          </div>
+        `;
+      }
+    }).join('');
+  }
+}
+
+// Setup Triage Filter Button listeners
+document.addEventListener('DOMContentLoaded', () => {
+  loadBrokerData();
+
+  const filterButtons = document.querySelectorAll('section[aria-label*="Client Pipeline"] button');
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => {
+        b.className = 'px-2.5 py-1 bg-surface-container-low text-on-surface-variant hover:bg-surface-container rounded border border-outline-variant/70 font-medium transition-colors';
+      });
+      btn.className = 'px-2.5 py-1 bg-primary text-on-primary rounded font-bold shadow-xs';
+
+      const label = btn.textContent.toLowerCase();
+      if (label.includes('call-up')) {
+        currentFilter = 'CALL_UP';
+      } else if (label.includes('negotiate')) {
+        currentFilter = 'NEGOTIATE';
+      } else {
+        currentFilter = 'ALL';
+      }
+      renderLeadDirectory();
+    });
+  });
+});
+</script>
+
+</body></html>

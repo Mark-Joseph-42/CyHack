@@ -34,13 +34,21 @@ app.add_middleware(
 )
 
 
+import os
+from fastapi.responses import RedirectResponse
+from fastapi.staticfiles import StaticFiles
+
+# Setup frontend static directory
+frontend_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "frontend")
+if os.path.exists(frontend_dir):
+    app.mount("/app", StaticFiles(directory=frontend_dir, html=True), name="frontend")
+
+
 @app.get("/")
 def root():
-    return {
-        "message": "Real Estate Lead Qualifier API is running",
-        "problem_statement": "Problem #4: Real Estate Lead Qualifier",
-        "docs_url": "/docs"
-    }
+    """Redirects root directly to the Buyer Discovery frontend."""
+    return RedirectResponse(url="/app/buyer.html")
+
 
 
 @app.get("/health")
