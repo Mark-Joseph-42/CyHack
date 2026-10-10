@@ -1,0 +1,767 @@
+<!DOCTYPE html><html class="h-full bg-background text-on-background" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PrimeEstates Pro — Buyer Discovery</title>
+<!-- Google Fonts: Hanken Grotesk & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed-dim": "#ffb77d",
+            "outline-variant": "#c1c8c4",
+            "primary-container": "#0f2922",
+            "on-primary-fixed": "#052019",
+            "on-secondary-fixed": "#002113",
+            "on-primary-fixed-variant": "#324c44",
+            "on-tertiary-container": "#d37300",
+            "on-secondary": "#ffffff",
+            "surface-container-low": "#f2f3ff",
+            "on-background": "#131b2e",
+            "surface-dim": "#d2d9f4",
+            "surface": "#faf8ff",
+            "tertiary-container": "#3c1c00",
+            "surface-container-lowest": "#ffffff",
+            "on-surface-variant": "#424845",
+            "tertiary-fixed": "#ffdcc3",
+            "secondary-container": "#6cf8bb",
+            "error": "#ba1a1a",
+            "on-secondary-container": "#00714d",
+            "tertiary": "#1d0a00",
+            "surface-tint": "#4a645b",
+            "primary-fixed": "#cce9de",
+            "on-primary-container": "#769188",
+            "on-error-container": "#93000a",
+            "inverse-surface": "#283044",
+            "on-tertiary": "#ffffff",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed-variant": "#005236",
+            "surface-container-highest": "#dae2fd",
+            "outline": "#727975",
+            "surface-variant": "#dae2fd",
+            "secondary-fixed-dim": "#4edea3",
+            "background": "#faf8ff",
+            "on-tertiary-fixed-variant": "#6e3900",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "primary": "#00130d",
+            "on-tertiary-fixed": "#2f1500",
+            "surface-bright": "#faf8ff",
+            "inverse-on-surface": "#eef0ff",
+            "secondary-fixed": "#6ffbbe",
+            "secondary": "#006c49",
+            "surface-container-high": "#e2e7ff",
+            "inverse-primary": "#b0cdc2",
+            "primary-fixed-dim": "#b0cdc2",
+            "on-surface": "#131b2e",
+            "surface-container": "#eaedff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "gutter": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin": "2rem",
+            "gutter-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-xl": "2.5rem"
+          },
+          "fontFamily": {
+            "display-hero": ["Hanken Grotesk"],
+            "headline-sm": ["Hanken Grotesk"],
+            "headline-lg": ["Hanken Grotesk"],
+            "display-hero-mobile": ["Hanken Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "headline-md": ["Hanken Grotesk"],
+            "label-mono-sm": ["JetBrains Mono"],
+            "body-sm": ["Hanken Grotesk"],
+            "headline-lg-mobile": ["Hanken Grotesk"],
+            "metric-xl": ["Hanken Grotesk"],
+            "label-mono-md": ["JetBrains Mono"]
+          },
+          "fontSize": {
+            "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "600" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-mono-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "metric-xl": ["40px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "label-mono-md": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="h-full bg-background font-body-md text-on-background antialiased flex flex-col selection:bg-secondary-fixed selection:text-on-secondary-fixed vc-init">
+<!-- Top Announcement / Broker Switch Bar Banner -->
+<div class="w-full bg-primary-container text-surface-container-lowest px-space-md py-space-xs text-center border-b border-outline-variant flex items-center justify-between z-40">
+<div class="flex items-center gap-space-sm mx-auto text-label-mono-sm font-label-mono-sm">
+<span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-secondary-fixed animate-ping"></span>
+<span class="text-secondary-fixed">LIVE QUALIFICATION SYNC:</span>
+<span class="text-on-primary-container">Marcus Vance dossier evaluated with 95/100 underwriting confidence.</span>
+</div>
+<a class="hidden sm:inline-flex items-center gap-space-xs text-label-mono-sm font-label-mono-sm text-tertiary-fixed hover:text-surface-container-lowest transition-colors" href="#broker-triage-preview">
+<span class="">Switch to Broker Triage View</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- Shared Component: TopNavBar (Exact Schema Implementation) -->
+<header class="bg-surface-container-lowest dark:bg-surface-container-low shadow-sm border-b border-outline-variant dark:border-outline docked full-width top-0 sticky z-30">
+<div class="flex justify-between items-center w-full px-space-lg h-16 max-w-full">
+<!-- Brand & Search cluster -->
+<div class="flex items-center gap-space-lg">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center text-secondary-fixed border border-secondary-container">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill" style="font-variation-settings: &quot;FILL&quot; 1;">apartment</span>
+</div>
+<span class="text-headline-sm font-headline-sm font-bold tracking-tight text-primary dark:text-inverse-primary">PrimeEstates Pro</span>
+</div>
+<!-- Left Search Bar as mandated by JSON ("search_bar": "on_left") -->
+<div class="hidden lg:flex items-center relative w-72">
+<span class="material-symbols-outlined absolute left-3 text-outline text-[18px]">search</span>
+<input class="w-full pl-9 pr-3 py-1.5 bg-surface rounded-lg border border-outline-variant text-body-sm font-body-sm focus:border-primary-container focus:ring-1 focus:ring-primary-container text-on-surface" placeholder="Search Downtown residences, MLS..." type="text" value="Downtown / Central luxury">
+<kbd class="absolute right-2 px-1.5 py-0.5 text-label-mono-sm font-label-mono-sm text-outline-variant bg-surface-container-low border border-outline-variant rounded">⌘K</kbd>
+</div>
+</div>
+<!-- Navigation Links from JSON: Buyer Discovery, Broker Pipeline, Portfolio Leads, Market Intel -->
+<nav class="hidden md:flex items-center gap-space-lg">
+</nav>
+<!-- Trailing Action Cluster with View Switcher, icons, and Profile -->
+<div class="flex items-center gap-space-md">
+<!-- Pill button for View Switcher -->
+<!-- Trailing action button: Launch Dialer -->
+<button class="hidden xl:flex items-center gap-space-xs bg-primary-container text-surface-container-lowest px-space-md py-1.5 rounded-lg text-label-mono-sm font-label-mono-sm hover:bg-opacity-95 transition-all">
+<span class="material-symbols-outlined text-[16px]">call</span>
+<span class="">Launch Dialer</span>
+</button>
+<!-- Trailing icons from JSON: notifications, smart_toy, tune -->
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<button aria-label="Notifications" class="p-1.5 rounded-lg hover:bg-surface-container-high transition-colors relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error"></span>
+</button>
+<button aria-label="AI Assistant" class="p-1.5 rounded-lg hover:bg-surface-container-high transition-colors text-secondary" id="toggleAiConcierge">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill" style="font-variation-settings: &quot;FILL&quot; 1;">smart_toy</span>
+</button>
+<button aria-label="Preferences" class="p-1.5 rounded-lg hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<!-- Verified User Profile: Marcus Vance -->
+<div class="flex items-center gap-space-sm pl-space-xs">
+<div class="relative">
+<img class="w-9 h-9 rounded-full object-cover border-2 border-secondary-fixed shadow-sm" data-alt="Close-up portrait of Marcus Vance, an executive luxury home buyer wearing a tailored slate-grey suit with sharp high-contrast studio rim lighting, exuding calm confidence against a minimalist architectural background in soft neutral tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-idCKiPYwfLr5o12wR2c7DrJsjT89Jqc01eXLMjCTygFzXiRxNhSxYVzxNVLXgUx0zCoQtRhh8na9teyhsu4fA7D990uEKf75zW1oM2UtQqo49gM1S_sG6Wl4D7JRYXRtpHqzEj7EgkqLze_qdEbv0240V_X3rBERppwVV2_xZrOXSPRLuBPK1k66kjTSul1wdBHWdCzLooB3AUafGY-wSMkvW4wsVJv-8qRWfN2vhb7tkblHtqCrYQ">
+<span class="absolute -bottom-0.5 -right-0.5 bg-secondary text-surface-container-lowest rounded-full p-0.5 flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px]">check</span>
+</span>
+</div>
+<div class="hidden xl:flex flex-col text-left">
+<span class="text-body-sm font-body-sm font-semibold text-on-surface">Marcus Vance</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Secondary Context Bar: Buyer Discovery Status & Sub-Navigation -->
+<!-- Main Canvas Container -->
+<main class="flex-1 w-full max-w-[1600px] mx-auto px-space-md sm:px-space-lg lg:px-space-xl py-space-lg space-y-space-lg"><!-- Compact Streamlined Header & Filter Section -->
+<div class="space-y-space-sm">
+<!-- Header Summary Banner -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pb-space-xs border-b border-outline-variant">
+<div class="flex flex-wrap items-center gap-space-sm">
+<div class="inline-flex items-center gap-1 bg-secondary-container text-on-secondary-container px-2.5 py-0.5 rounded-full text-label-mono-sm font-label-mono-sm font-semibold border border-secondary-fixed">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+<span class="">AI UNDERWRITING ACTIVATED</span>
+</div>
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary tracking-tight">
+        Find Your Dream Home in Minutes
+      </h1>
+<span class="hidden sm:inline-block text-outline-variant">·</span>
+<span class="hidden sm:inline-block text-body-sm font-body-sm text-on-surface-variant">
+        Luxury curation with instant broker tour booking for Marcus Vance
+      </span>
+</div>
+<div class="flex items-center gap-2 text-label-mono-sm font-label-mono-sm">
+<span class="text-on-surface-variant">Dossier #PRIME-88219</span>
+<span class="bg-secondary-fixed text-on-secondary-fixed px-2 py-0.5 rounded font-bold">95/100 Confidence</span>
+</div>
+</div>
+<!-- Compact Filter Bar -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-space-sm shadow-sm flex flex-col lg:flex-row items-stretch lg:items-center gap-space-sm"><!-- Search / Target Neighborhood -->
+<div class="flex-1 min-w-[220px] h-12 relative flex items-center bg-surface rounded-lg border border-outline-variant px-3">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mr-2">location_on</span>
+<input class="w-full bg-transparent border-0 p-0 text-body-sm font-body-sm focus:ring-0 text-on-surface font-medium truncate" placeholder="e.g. Downtown / Central, Financial District..." type="text" value="Downtown / Central, Financial Core">
+</div>
+<!-- Budget Selector -->
+<div class="flex items-center gap-2 bg-surface px-3 h-12 rounded-lg border border-outline-variant min-w-[200px] shrink-0">
+<span class="material-symbols-outlined text-outline text-[18px] shrink-0">payments</span>
+<div class="flex-1 flex flex-col justify-center">
+<div class="flex justify-between items-center text-label-mono-sm font-label-mono-sm leading-none">
+<span class="text-on-surface-variant text-[10px] uppercase font-bold">Target Budget</span>
+<span class="text-secondary font-bold">$850,000</span>
+</div>
+<input class="w-full accent-primary h-1 bg-surface-container rounded cursor-pointer mt-1" max="1500" min="500" type="range" value="850">
+</div>
+</div>
+<!-- Timeline Dropdown -->
+<div class="flex items-center justify-between gap-2 bg-surface px-3 h-12 rounded-lg border border-outline-variant text-body-sm font-body-sm min-w-[180px] shrink-0 cursor-pointer">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px] shrink-0">schedule</span>
+<div class="flex flex-col justify-center leading-none">
+<span class="text-label-mono-sm font-label-mono-sm text-on-surface-variant text-[10px] uppercase font-bold mb-0.5">Timeline</span>
+<span class="text-on-surface font-semibold text-body-sm truncate">&lt; 30 Days (Immediate)</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px] shrink-0">expand_more</span>
+</div>
+<!-- Property Type Chip -->
+
+<!-- Curate Matches CTA -->
+<button class="h-12 bg-primary-container text-surface-container-lowest hover:bg-opacity-95 px-space-md rounded-lg font-semibold text-body-sm font-body-sm flex items-center justify-center gap-1.5 border border-primary shrink-0 shadow-sm transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-secondary-fixed text-[18px]">auto_awesome</span>
+<span class="whitespace-nowrap">Curate Matches (18)</span>
+</button></div>
+</div>
+<!-- 2-Column Split Layout: Curated Matches (Left ~52%) & AI Concierge Chat (Right ~48%) -->
+<!-- Full Width Curated Property Showcase Section -->
+<div class="space-y-space-md w-full">
+<!-- Curated List Controls Header -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-low px-space-md py-3 rounded-xl border border-outline-variant">
+<div class="flex items-center gap-space-sm">
+<h2 class="text-body-md font-body-md font-bold text-primary">Curated Properties for Marcus Vance</h2>
+<span class="bg-secondary-fixed text-on-secondary-fixed px-2.5 py-0.5 rounded-full text-label-mono-sm font-label-mono-sm font-bold">3 Direct Fits</span>
+<span class="hidden md:inline-flex items-center gap-1 text-label-mono-sm text-secondary font-medium pl-2">
+<span class="material-symbols-outlined text-[15px]">verified</span> Pre-Underwritten to $900,000
+      </span>
+</div>
+<div class="flex items-center gap-3">
+
+
+</div>
+</div>
+<!-- Full Width 3-Card Responsive Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-md">
+<!-- Property Card 1: 98% Match (Featured Penthouse) -->
+<article class="bg-surface-container-lowest rounded-xl border-2 border-secondary overflow-hidden shadow-sm flex flex-col group hover:shadow-md transition-all duration-300 relative" data-property-match="98%" data-property-name="Luxury 3BHK Skyline Penthouse with Private Terrace" data-property-price="$850,000">
+<div class="relative h-56 w-full overflow-hidden bg-surface-container">
+<img alt="Luxury penthouse living room overlooking skyline" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNqwXFuAA5K8719npMGIXotlOE6XFTN4JYPE5-BZMY4fQmo-tIoqg2hzgNBjrVj3pGKLM-eh0hSI983AuwYMd7RWtQdXOLIQeAzbS5vtl1IY53jzqneWcZUXmja0VVoVoF6aGhaNMvc723Jg-rcF8T3Qs-QX0wCkmK_7Xy120LRkRBgnRkV_EUiDIS9_ewfEzv5GJBWaince1fSCqlITDttVYnhBpgbBy0AkRGST3TjJ9MzqHoWpim0A">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+<span class="bg-primary text-secondary-fixed text-label-mono-sm font-label-mono-sm px-2.5 py-0.5 rounded font-bold border border-secondary-fixed flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary-fixed">local_fire_department</span> 98% Match
+          </span>
+<span class="bg-secondary-fixed text-on-secondary-fixed text-label-mono-sm font-label-mono-sm px-2 py-0.5 rounded font-bold shadow-sm">Top Pick</span>
+</div>
+<button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-container-lowest/90 backdrop-blur-sm text-primary hover:text-error flex items-center justify-center transition-colors shadow-sm" title="Save to dossier">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 right-3 flex items-end justify-between text-surface-container-lowest">
+<div>
+<div class="text-label-mono-sm font-label-mono-sm text-secondary-fixed tracking-wide uppercase font-bold text-[10px]">Top Recommended Dossier</div>
+<div class="text-headline-sm font-headline-sm font-bold text-surface-container-lowest">$850,000</div>
+</div>
+<div class="text-label-mono-sm font-label-mono-sm bg-primary/80 px-2 py-1 rounded text-surface-container-lowest text-[11px]">
+            Est. $4,120 / mo
+          </div>
+</div>
+</div>
+<div class="p-space-md flex-1 flex flex-col justify-between space-y-space-xs">
+<div class="space-y-1.5">
+<div class="flex items-center gap-1 text-on-surface-variant text-body-sm font-body-sm">
+<span class="material-symbols-outlined text-[15px] text-secondary">location_on</span>
+<span class="font-semibold text-primary truncate">Downtown / Financial Core</span>
+<span class="text-outline-variant">·</span>
+<span class="truncate text-[12px]">Unit 3402</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm font-bold text-primary leading-snug line-clamp-2">
+            Luxury 3BHK Skyline Penthouse with Private Terrace
+          </h3>
+<div class="grid grid-cols-3 gap-2 py-2 px-2.5 bg-surface rounded-lg border border-outline-variant text-center my-2">
+<div>
+<span class="text-on-surface-variant block text-[10px] uppercase font-medium">Bedrooms</span>
+<span class="text-body-md font-semibold text-primary">3 Beds</span>
+</div>
+<div class="border-x border-outline-variant">
+<span class="text-on-surface-variant block text-[10px] uppercase font-medium">Bathrooms</span>
+<span class="text-body-md font-semibold text-primary">3 Baths</span>
+</div>
+<div>
+<span class="text-on-surface-variant block text-[10px] uppercase font-medium">Total Space</span>
+<span class="text-body-md font-semibold text-primary">2,450 sqft</span>
+</div>
+</div>
+<div class="bg-secondary-container/30 border border-secondary rounded-lg p-2.5 flex items-start gap-2 text-body-sm text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">psychology</span>
+<div class="text-[12px] leading-relaxed">
+<span class="font-bold text-secondary">AI Insight:</span> Fits $850k target, 21-day expedited close verified, includes deeded prime parking.
+            </div>
+</div>
+</div>
+<div class="pt-2 flex items-center gap-2">
+<button class="action-request-viewing flex-1 bg-secondary text-surface-container-lowest hover:bg-secondary/90 py-2.5 px-3 rounded-lg font-semibold text-body-sm flex items-center justify-center gap-1.5 shadow-sm transition-all">
+<span class="material-symbols-outlined text-[16px]">calendar_month</span>
+<span class="">Request Viewing</span>
+</button>
+<button class="action-ask-ai flex-1 bg-surface-container-high hover:bg-surface-container text-primary py-2.5 px-3 rounded-lg font-semibold text-body-sm flex items-center justify-center gap-1.5 transition-all border border-outline-variant">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+<span class="">Ask AI</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Property Card 2: 94% Match (Urban Modern Loft) -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-sm flex flex-col group hover:border-outline hover:shadow-md transition-all duration-300 relative" data-property-match="94%" data-property-name="Urban Modern Loft with Floor-to-Ceiling Glass" data-property-price="$820,000">
+<div class="relative h-56 w-full overflow-hidden bg-surface-container">
+<img alt="Urban modern loft living area" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAACGiv-0dep3WDQgjurqBK0ofxumyMYw9yIHdV5ovTGq7OjDBdVXZdydY3HFMqOnWn2ybiz_bzHD-c-oKSYcWxm1beAmYJczAQuRumH0QuWTRnbULxzJ9qkfr0quTocunj54sLW9j-dB66a2YxFnUCqhL8dz90wFq19IlCd-Oawb8u73RO0-k1XAcFDZALl47G1H4YmQXvvmZWLAeDBAm_J3NrvgE8KjGnXQlmM32fNtIjx8-pRBs9Zw">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+<span class="bg-primary/90 text-secondary-fixed text-label-mono-sm font-label-mono-sm px-2.5 py-0.5 rounded font-bold border border-secondary-fixed/50 flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary-fixed">verified</span> 94% Match
+          </span>
+<span class="bg-surface-container-lowest/95 text-secondary text-label-mono-sm font-label-mono-sm px-2 py-0.5 rounded font-bold border border-secondary-container shadow-sm">
+            Under Budget
+          </span>
+</div>
+<button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-container-lowest/90 backdrop-blur-sm text-primary hover:text-error flex items-center justify-center transition-colors shadow-sm" title="Save to dossier">
+<span class="material-symbols-outlined text-[18px]">bookmark_border</span>
+</button>
+<div class="absolute bottom-3 left-3 right-3 flex items-end justify-between text-surface-container-lowest">
+<div>
+<div class="text-label-mono-sm font-label-mono-sm text-secondary-fixed tracking-wide uppercase font-bold text-[10px]">Approved Budget Surplus</div>
+<div class="text-headline-sm font-headline-sm font-bold text-surface-container-lowest">$820,000</div>
+</div>
+<div class="text-label-mono-sm font-label-mono-sm bg-primary/80 px-2 py-1 rounded text-surface-container-lowest text-[11px]">
+            Est. $3,940 / mo
+          </div>
+</div>
+</div>
+<div class="p-space-md flex-1 flex flex-col justify-between space-y-space-xs">
+<div class="space-y-1.5">
+<div class="flex items-center gap-1 text-on-surface-variant text-body-sm font-body-sm">
+<span class="material-symbols-outlined text-[15px] text-secondary">location_on</span>
+<span class="font-semibold text-primary truncate">Downtown Financial District</span>
+<span class="text-outline-variant">·</span>
+<span class="truncate text-[12px]">450 Meridian Way</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm font-bold text-primary leading-snug line-clamp-2">
+            Urban Modern Loft with Floor-to-Ceiling Glass
+          </h3>
+<div class="grid grid-cols-3 gap-2 py-2 px-2.5 bg-surface rounded-lg border border-outline-variant text-center my-2">
+<div>
+<span class="text-on-surface-variant block text-[10px] uppercase font-medium">Bedrooms</span>
+<span class="text-body-md font-semibold text-primary">2 Beds</span>
+</div>
+<div class="border-x border-outline-variant">
+<span class="text-on-surface-variant block text-[10px] uppercase font-medium">Bathrooms</span>
+<span class="text-body-md font-semibold text-primary">2 Baths</span>
+</div>
+<div>
+<span class="text-on-surface-variant block text-[10px] uppercase font-medium">Total Space</span>
+<span class="text-body-md font-semibold text-primary">1,850 sqft</span>
+</div>
+</div>
+<div class="bg-surface p-2.5 rounded-lg border border-outline-variant flex items-start gap-2 text-body-sm text-on-surface">
+<span class="material-symbols-outlined text-outline text-[18px] shrink-0 mt-0.5">info</span>
+<div class="text-[12px] leading-relaxed text-on-surface-variant">
+<span class="font-bold text-primary">Status:</span> Move-in ready in 14 days. Full $30k under approved limit with private balcony.
+            </div>
+</div>
+</div>
+<div class="pt-2 flex items-center gap-2">
+<button class="action-request-viewing flex-1 bg-secondary text-surface-container-lowest hover:bg-secondary/90 py-2.5 px-3 rounded-lg font-semibold text-body-sm flex items-center justify-center gap-1.5 shadow-sm transition-all">
+<span class="material-symbols-outlined text-[16px]">calendar_month</span>
+<span class="">Request Viewing</span>
+</button>
+<button class="action-ask-ai flex-1 bg-surface-container-high hover:bg-surface-container text-primary py-2.5 px-3 rounded-lg font-semibold text-body-sm flex items-center justify-center gap-1.5 transition-all border border-outline-variant">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+<span class="">Ask AI</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Property Card 3: 91% Match (Garden Townhouse) -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-sm flex flex-col group hover:border-outline hover:shadow-md transition-all duration-300 relative" data-property-match="91%" data-property-name="Garden Townhouse with Private Courtyard" data-property-price="$890,000">
+<div class="relative h-56 w-full overflow-hidden bg-surface-container">
+<img alt="Garden townhouse facade and courtyard" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBksRCxd7IygW4dx2PwC7ZgGDVgEHyUDeJegeMohI5Jgj6scGH9QGXm1d1Eo2tuIoMyuEzPAGu3SSKwSHC7qSV0aqMawJfWNg7kAVDeVlV9YxdMK4NAvCWBFwTgtFA9OVjtvG3tjL9DHYUiOi-Tsr7Hlh5Tegyu0psxmSwieE2sD4uc_zDb9h2Z-CuW4Izu6WxLxEH3GN9hGDaObFewSHWylCPn5kEeInkzCuQF5QEdv6s4NAP1rUKqJw">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+<span class="bg-primary/90 text-tertiary-fixed-dim text-label-mono-sm font-label-mono-sm px-2.5 py-0.5 rounded font-bold border border-tertiary-fixed/40 flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim">trending_up</span> 91% Match
+          </span>
+<span class="bg-surface-container-lowest/95 text-on-tertiary-container text-label-mono-sm font-label-mono-sm px-2 py-0.5 rounded font-bold border border-tertiary-fixed shadow-sm">
+            High Demand
+          </span>
+</div>
+<button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-container-lowest/90 backdrop-blur-sm text-primary hover:text-error flex items-center justify-center transition-colors shadow-sm" title="Save to dossier">
+<span class="material-symbols-outlined text-[18px]">bookmark_border</span>
+</button>
+<div class="absolute bottom-3 left-3 right-3 flex items-end justify-between text-surface-container-lowest">
+<div>
+<div class="text-label-mono-sm font-label-mono-sm text-tertiary-fixed-dim tracking-wide uppercase font-bold text-[10px]">Competitive Listing</div>
+<div class="text-headline-sm font-headline-sm font-bold text-surface-container-lowest">$890,000</div>
+</div>
+<div class="text-label-mono-sm font-label-mono-sm bg-primary/80 px-2 py-1 rounded text-surface-container-lowest text-[11px]">
+            Est. $4,290 / mo
+          </div>
+</div>
+</div>
+<div class="p-space-md flex-1 flex flex-col justify-between space-y-space-xs">
+<div class="space-y-1.5">
+<div class="flex items-center gap-1 text-on-surface-variant text-body-sm font-body-sm">
+<span class="material-symbols-outlined text-[15px] text-secondary">location_on</span>
+<span class="font-semibold text-primary truncate">Downtown South</span>
+<span class="text-outline-variant">·</span>
+<span class="truncate text-[12px]">18 Mulberry Lane</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm font-bold text-primary leading-snug line-clamp-2">
+            Garden Townhouse with Private Courtyard
+          </h3>
+<div class="grid grid-cols-3 gap-2 py-2 px-2.5 bg-surface rounded-lg border border-outline-variant text-center my-2">
+<div>
+<span class="text-on-surface-variant block text-[10px] uppercase font-medium">Bedrooms</span>
+<span class="text-body-md font-semibold text-primary">3 Beds</span>
+</div>
+<div class="border-x border-outline-variant">
+<span class="text-on-surface-variant block text-[10px] uppercase font-medium">Bathrooms</span>
+<span class="text-body-md font-semibold text-primary">2.5 Baths</span>
+</div>
+<div>
+<span class="text-on-surface-variant block text-[10px] uppercase font-medium">Total Space</span>
+<span class="text-body-md font-semibold text-primary">2,200 sqft</span>
+</div>
+</div>
+<div class="bg-surface p-2.5 rounded-lg border border-outline-variant flex items-start gap-2 text-body-sm text-on-surface">
+<span class="material-symbols-outlined text-outline text-[18px] shrink-0 mt-0.5">priority_high</span>
+<div class="text-[12px] leading-relaxed text-on-surface-variant">
+<span class="font-bold text-primary">Status:</span> Multiple offers expected. Private gated courtyard and separate storage cellar.
+            </div>
+</div>
+</div>
+<div class="pt-2 flex items-center gap-2">
+<button class="action-request-viewing flex-1 bg-secondary text-surface-container-lowest hover:bg-secondary/90 py-2.5 px-3 rounded-lg font-semibold text-body-sm flex items-center justify-center gap-1.5 shadow-sm transition-all">
+<span class="material-symbols-outlined text-[16px]">calendar_month</span>
+<span class="">Request Viewing</span>
+</button>
+<button class="action-ask-ai flex-1 bg-surface-container-high hover:bg-surface-container text-primary py-2.5 px-3 rounded-lg font-semibold text-body-sm flex items-center justify-center gap-1.5 transition-all border border-outline-variant">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+<span class="">Ask AI</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</div>
+<!-- Slide-Over AI Concierge Drawer & Backdrop -->
+<div class="fixed inset-0 bg-primary/40 backdrop-blur-sm z-40 transition-opacity duration-300 hidden" id="aiDrawerBackdrop"></div>
+<aside class="fixed top-0 right-0 h-full w-full max-w-lg bg-surface-container-lowest shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col border-l border-outline-variant overflow-hidden translate-x-full" id="aiDrawerPanel">
+<!-- AI Concierge Panel Header -->
+<div class="bg-primary-container text-surface-container-lowest px-space-md py-3 flex items-center justify-between border-b border-primary shrink-0">
+<div class="flex items-center gap-space-sm">
+<div class="relative">
+<span class="material-symbols-outlined text-secondary-fixed text-[24px]" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-body-md font-body-md font-bold leading-none text-surface-container-lowest">AI Concierge &amp; Property Underwriter</h3>
+<span class="bg-secondary-fixed text-on-secondary-fixed text-[10px] px-1.5 py-0.5 rounded font-bold">Verified</span>
+</div>
+<span class="text-label-mono-sm font-label-mono-sm text-on-primary-container text-[11px]">Active Underwriting Sync with Marcus Vance</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-surface-container-lowest">
+<button class="p-1.5 hover:bg-white/10 rounded transition-colors" id="closeAiDrawerBtn" title="Close Drawer">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</div>
+<!-- Qualification Status Sub-banner -->
+<div class="bg-secondary-container/30 border-b border-secondary-container px-space-md py-2 flex items-center justify-between shrink-0">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[16px]">verified</span>
+<p class="text-label-mono-sm font-label-mono-sm font-bold text-on-secondary-container text-[11px]">
+        Marcus Vance dossier: 95/100 underwriting confidence
+      </p>
+</div>
+<span class="text-label-mono-sm text-secondary font-bold text-[11px]">First Capital Pre-Approved ($900k)</span>
+</div>
+<!-- Active Property Context Banner (Dynamic) -->
+<div class="px-space-md py-2 bg-surface-container-high border-b border-outline-variant flex items-center justify-between text-body-sm" id="activePropertyBanner">
+<div class="flex items-center gap-2 truncate">
+<span class="material-symbols-outlined text-secondary text-[16px] shrink-0">domain</span>
+<span class="font-semibold text-primary truncate text-[13px]" id="activePropertyTitle">Urban Modern Loft with Floor-to-Ceiling Glass</span>
+</div>
+<span class="text-label-mono-sm font-bold text-secondary text-[12px] shrink-0 pl-2" id="activePropertyPrice">$820,000</span>
+</div>
+<!-- Scrollable Chat Message Thread -->
+<div class="flex-1 p-space-md space-y-space-md overflow-y-auto bg-surface text-body-sm font-body-sm" id="chatThread">
+<!-- AI Message 1 -->
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary-container text-secondary-fixed flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">smart_toy</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl rounded-tl-none p-3 shadow-sm max-w-[85%] text-on-surface space-y-1">
+<p class="leading-relaxed">Hi Marcus! I have reviewed your search criteria: <strong>Downtown / Central luxury residences near $850,000</strong>. How soon do you need to execute, and have you finalized First Capital financing?</p>
+<span class="text-label-mono-sm font-label-mono-sm text-outline block text-right text-[10px]">10:14 AM</span>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex items-start justify-end gap-space-sm">
+<div class="bg-primary-container text-surface-container-lowest rounded-xl rounded-tr-none p-3 shadow-sm max-w-[85%] space-y-1">
+<p class="leading-relaxed">Need to close within 30 days due to job relocation! Financing is pre-approved with First Capital ($900k letter attached). Can we schedule a private tour for the 3BHK Penthouse?</p>
+<span class="text-label-mono-sm font-label-mono-sm text-on-primary-container block text-right text-[10px]">10:15 AM</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-secondary text-surface-container-lowest flex items-center justify-center shrink-0 mt-0.5 font-bold text-label-mono-sm font-label-mono-sm">
+        MV
+      </div>
+</div>
+<!-- AI Message 2 -->
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary-container text-secondary-fixed flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">smart_toy</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl rounded-tl-none p-3 shadow-sm max-w-[88%] text-on-surface space-y-2">
+<p class="leading-relaxed">Outstanding! The <strong>Luxury 3BHK Skyline Penthouse (Unit 3402)</strong> is a 98% match and available for immediate occupancy. Closing in 21 days is fully feasible.</p>
+<div class="bg-surface p-2.5 rounded-lg border border-secondary-container flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">verified</span>
+<div class="text-label-mono-sm font-label-mono-sm text-on-surface space-y-0.5">
+<div class="font-bold text-primary">Assigned Senior Broker: Elena Vance</div>
+<div class="text-on-surface-variant text-[11px]">Call window set: 10:30 AM · Broker Desk notified with high-conviction flag.</div>
+</div>
+</div>
+<p class="text-[12px] text-on-surface-variant leading-relaxed">I have placed a 24-hour courtesy hold on the tour slot. Would you like me to dispatch the floor plan architectural packet or confirm the HOA breakdown?</p>
+<span class="text-label-mono-sm font-label-mono-sm text-outline block text-right text-[10px]">10:16 AM</span>
+</div>
+</div>
+<div class="flex items-start justify-end gap-space-sm">
+          <div class="bg-primary-container text-surface-container-lowest rounded-xl rounded-tr-none p-3 shadow-sm max-w-[85%] space-y-1">
+            <p class="leading-relaxed">Hello Elena &amp; AI Concierge: Please schedule a priority tour for Urban Modern Loft with Floor-to-Ceiling Glass ($820,000). Underwriting pre-clearance is ready.</p>
+            <span class="text-label-mono-sm font-label-mono-sm text-on-primary-container block text-right text-[10px]">Just now</span>
+          </div>
+          <div class="w-8 h-8 rounded-full bg-secondary text-surface-container-lowest flex items-center justify-center shrink-0 mt-0.5 font-bold text-label-mono-sm">
+            MV
+          </div>
+        </div></div>
+<!-- Quick Suggested Prompt Chips -->
+<div class="px-space-md py-2 bg-surface-container-lowest border-t border-surface-container flex items-center gap-1.5 overflow-x-auto text-label-mono-sm font-label-mono-sm whitespace-nowrap shrink-0">
+<button class="chat-chip bg-surface hover:bg-surface-container text-primary border border-outline-variant px-2.5 py-1 rounded-full transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">calendar_today</span>
+<span class="">Schedule viewing for Penthouse</span>
+</button>
+<button class="chat-chip bg-surface hover:bg-surface-container text-primary border border-outline-variant px-2.5 py-1 rounded-full transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-outline">request_quote</span>
+<span class="">Ask about HOA &amp; Tax fees</span>
+</button>
+<button class="chat-chip bg-surface hover:bg-surface-container text-primary border border-outline-variant px-2.5 py-1 rounded-full transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-outline">compare_arrows</span>
+<span class="">Compare with Urban Loft</span>
+</button>
+</div>
+<!-- Bottom Docked Message Input Area -->
+<div class="p-space-sm bg-surface-container-lowest border-t border-outline-variant shrink-0">
+<form class="flex items-center gap-2" id="chatForm">
+<button class="p-2 hover:bg-surface rounded-lg text-outline transition-colors" title="Attach Dossier or Pre-approval Doc" type="button">
+<span class="material-symbols-outlined text-[18px]">attach_file</span>
+</button>
+<input class="flex-1 bg-surface border border-outline-variant rounded-lg px-3 py-2 text-body-sm font-body-sm text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container" id="chatInput" placeholder="Ask anything about listings, financing, or closing..." type="text">
+<button class="p-2 hover:bg-surface rounded-lg text-outline transition-colors hidden sm:inline-flex" title="Voice input" type="button">
+<span class="material-symbols-outlined text-[18px]">mic</span>
+</button>
+<button class="bg-primary-container hover:bg-opacity-95 text-surface-container-lowest px-3.5 py-2 rounded-lg font-semibold text-body-sm font-body-sm flex items-center justify-center transition-all" type="submit">
+<span class="material-symbols-outlined text-[16px]">send</span>
+</button>
+</form>
+</div>
+</aside>
+<!-- Floating Concierge Quick-Launch FAB Button (Bottom Right) -->
+<div class="fixed bottom-6 right-6 z-30">
+
+</div></main>
+<!-- Shared Component 4: Floating AI Concierge Panel (Open State on Bottom-Right) -->
+<!-- Bottom Floating Toggle when Concierge is Minimized -->
+<!-- Interactive UI micro-interactions script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const conciergePanel = document.getElementById('aiConciergePanel');
+      const floatingTrigger = document.getElementById('floatingAiTrigger');
+      const closeAiBtn = document.getElementById('closeAiBtn');
+      const minimizeAiBtn = document.getElementById('minimizeAiBtn');
+      const toggleAiConcierge = document.getElementById('toggleAiConcierge');
+      const openAiDossierBtn = document.getElementById('openAiDossierBtn');
+      const switchViewBtn = document.getElementById('switchViewBtn');
+      const chatForm = document.getElementById('chatForm');
+      const chatInput = document.getElementById('chatInput');
+      const chatThread = document.getElementById('chatThread');
+      const chatChips = document.querySelectorAll('.chat-chip');
+
+      function hideConcierge() {
+        conciergePanel.classList.add('hidden');
+        floatingTrigger.classList.remove('hidden');
+      }
+
+      function showConcierge() {
+        conciergePanel.classList.remove('hidden');
+        floatingTrigger.classList.add('hidden');
+      }
+
+      closeAiBtn.addEventListener('click', hideConcierge);
+      minimizeAiBtn.addEventListener('click', hideConcierge);
+      floatingTrigger.addEventListener('click', showConcierge);
+      if (toggleAiConcierge) toggleAiConcierge.addEventListener('click', showConcierge);
+      if (openAiDossierBtn) openAiDossierBtn.addEventListener('click', showConcierge);
+
+      // Quick Chat Chips
+      chatChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chatInput.value = chip.innerText;
+          chatInput.focus();
+        });
+      });
+
+      // Simple chat simulator
+      chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const text = chatInput.value.trim();
+        if (!text) return;
+
+        // Append user bubble
+        const userDiv = document.createElement('div');
+        userDiv.className = 'flex items-start justify-end gap-space-sm';
+        userDiv.innerHTML = `
+          <div class="bg-primary-container text-surface-container-lowest rounded-xl rounded-tr-none p-3 shadow-sm max-w-[85%]">
+            <p>${text}</p>
+            <span class="text-label-mono-sm font-label-mono-sm text-on-primary-container block text-right mt-1">Just now</span>
+          </div>
+          <div class="w-7 h-7 rounded-full bg-secondary text-surface-container-lowest flex items-center justify-center shrink-0 mt-0.5 font-bold text-label-mono-sm font-label-mono-sm">
+            MV
+          </div>
+        `;
+        chatThread.appendChild(userDiv);
+        chatInput.value = '';
+        chatThread.scrollTop = chatThread.scrollHeight;
+
+        // AI automated response simulation
+        setTimeout(() => {
+          const aiDiv = document.createElement('div');
+          aiDiv.className = 'flex items-start gap-space-sm';
+          aiDiv.innerHTML = `
+            <div class="w-7 h-7 rounded-full bg-primary-container text-secondary-fixed flex items-center justify-center shrink-0 mt-0.5 text-[14px]">
+              <span class="material-symbols-outlined text-[16px]">smart_toy</span>
+            </div>
+            <div class="bg-surface-container-lowest border border-outline-variant rounded-xl rounded-tl-none p-3 shadow-sm max-w-[85%] text-on-surface">
+              <p>Understood Marcus. I have appended "${text}" to your buyer underwriting dossier and notified broker Elena Vance immediately.</p>
+              <span class="text-label-mono-sm font-label-mono-sm text-outline block text-right mt-1">Just now</span>
+            </div>
+          `;
+          chatThread.appendChild(aiDiv);
+          chatThread.scrollTop = chatThread.scrollHeight;
+        }, 800);
+      });
+
+      // View switcher scroll preview
+      if (switchViewBtn) {
+        switchViewBtn.addEventListener('click', () => {
+          const previewEl = document.getElementById('broker-triage-preview');
+          if (previewEl) {
+            previewEl.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      }
+    });
+  </script>
+<script>
+  (function() {
+    const backdrop = document.getElementById('aiDrawerBackdrop');
+    const panel = document.getElementById('aiDrawerPanel');
+    const closeBtn = document.getElementById('closeAiDrawerBtn');
+    const openHeaderBtn = document.getElementById('openAiDrawerBtn');
+    const floatingBtn = document.getElementById('floatingConciergeBtn');
+    const navAiBtn = document.getElementById('toggleAiConcierge');
+    const activeTitle = document.getElementById('activePropertyTitle');
+    const activePrice = document.getElementById('activePropertyPrice');
+    const chatThread = document.getElementById('chatThread');
+    const chatInput = document.getElementById('chatInput');
+
+    function openDrawer(propertyName, propertyPrice, initialMsg) {
+      if (propertyName && activeTitle) activeTitle.textContent = propertyName;
+      if (propertyPrice && activePrice) activePrice.textContent = propertyPrice;
+
+      if (backdrop) {
+        backdrop.classList.remove('hidden');
+      }
+      if (panel) {
+        panel.classList.remove('translate-x-full');
+      }
+
+      if (initialMsg && chatThread) {
+        const note = document.createElement('div');
+        note.className = 'flex items-start justify-end gap-space-sm';
+        note.innerHTML = `
+          <div class="bg-primary-container text-surface-container-lowest rounded-xl rounded-tr-none p-3 shadow-sm max-w-[85%] space-y-1">
+            <p class="leading-relaxed">${initialMsg}</p>
+            <span class="text-label-mono-sm font-label-mono-sm text-on-primary-container block text-right text-[10px]">Just now</span>
+          </div>
+          <div class="w-8 h-8 rounded-full bg-secondary text-surface-container-lowest flex items-center justify-center shrink-0 mt-0.5 font-bold text-label-mono-sm">
+            MV
+          </div>
+        `;
+        chatThread.appendChild(note);
+        chatThread.scrollTop = chatThread.scrollHeight;
+      }
+    }
+
+    function closeDrawer() {
+      if (panel) panel.classList.add('translate-x-full');
+      if (backdrop) backdrop.classList.add('hidden');
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (backdrop) backdrop.addEventListener('click', closeDrawer);
+    if (openHeaderBtn) openHeaderBtn.addEventListener('click', () => openDrawer());
+    if (floatingBtn) floatingBtn.addEventListener('click', () => openDrawer());
+    if (navAiBtn) navAiBtn.addEventListener('click', () => openDrawer());
+
+    // Hook property cards Request Viewing & Ask AI
+    document.querySelectorAll('.action-request-viewing').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const card = e.currentTarget.closest('article');
+        const name = card.dataset.propertyName || 'Selected Property';
+        const price = card.dataset.propertyPrice || '';
+        openDrawer(name, price, `Hello Elena & AI Concierge: Please schedule a priority tour for ${name} (${price}). Underwriting pre-clearance is ready.`);
+      });
+    });
+
+    document.querySelectorAll('.action-ask-ai').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const card = e.currentTarget.closest('article');
+        const name = card.dataset.propertyName || 'Selected Property';
+        const price = card.dataset.propertyPrice || '';
+        openDrawer(name, price, `Can you verify HOA restrictions, tax projections, and rental yields for ${name}?`);
+      });
+    });
+  })();
+</script></body></html>
