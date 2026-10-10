@@ -5,8 +5,17 @@ Executes schema.sql to initialize SQLite tables and populate realistic seed data
 for the Real Estate Lead Qualifier Hackathon solution.
 """
 import os
+import sys
 import sqlite3
 import json
+
+# Ensure UTF-8 output encoding across platforms
+if hasattr(sys.stdout, 'reconfigure'):
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
 
 DB_FILE = "real_estate.db"
 SCHEMA_FILE = "schema.sql"

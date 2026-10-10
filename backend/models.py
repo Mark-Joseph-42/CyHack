@@ -1,6 +1,6 @@
 import enum
 from datetime import datetime
-from typing import List, Optional, Union
+from typing import List, Optional, Union, Dict, Any
 from sqlalchemy import (
     Column, Integer, String, Float, Text, Boolean, DateTime, ForeignKey, Enum as SQLEnum
 )
@@ -228,12 +228,56 @@ class LeadResponse(LeadBase):
     model_config = ConfigDict(from_attributes=True)
 
 
-# Chat request/response for Interactive Agent engagement
-class LeadChatRequest(BaseModel):
+# Chat and AI Agent decision schemas
+class ExtractedPreferences(BaseModel):
+    budget_min: Optional[float] = None
+    budget_max: Optional[float] = None
+    location: Optional[str] = None
+    property_type: Optional[str] = None
+    timeline_months: Optional[int] = None
+
+
+class MatchedPropertyItem(BaseModel):
+    id: int
+    title: str
+    price: float
+    location: str
+    bedrooms: Optional[int] = 2
+    property_type: Optional[str] = "Apartment"
+    description: Optional[str] = None
+    match_score: float = 1.0
+
+
+class AgentDecisionResponse(BaseModel):
+    lead_status: str = Field(description="'Qualified', 'Ambiguous', or 'Disqualified'")
+    extracted_preferences: ExtractedPreferences
+    recommended_action: str = Field(description="'escalate_to_broker', 'ask_follow_up', 'nurture', or 'redirect_or_archive'")
+    priority: str = Field(description="'High', 'Medium', or 'Low'")
+    reasoning: str
+    missing_information: List[str] = []
+    matched_properties: List[Dict[str, Any]] = []
+    reply: str
+
+
+class IncomingMessageRequest(BaseModel):
+    lead_id: int
     message: str
 
 
+class LeadChatRequest(BaseModel):
+    message: str
+    lead_id: Optional[int] = None
+
+
 class LeadChatResponse(BaseModel):
+    lead_status: str = "Ambiguous"
+    extracted_preferences: ExtractedPreferences = Field(default_factory=ExtractedPreferences)
+    recommended_action: str = "ask_follow_up"
+    priority: str = "Medium"
+    reasoning: str = ""
+    missing_information: List[str] = []
+    matched_properties: List[Dict[str, Any]] = []
     reply: str
-    qualification_evaluated: bool = False
+    qualification_evaluated: bool = True
     decision: Optional[NextActionDecisionOutput] = None
+

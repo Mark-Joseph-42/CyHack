@@ -11,7 +11,8 @@ from .models import (
     LeadResponse, LeadCreate,
     ConversationLogResponse, ConversationLogCreate,
     LeadQualificationResponse, NextActionDecisionOutput,
-    LeadChatRequest, LeadChatResponse
+    LeadChatRequest, LeadChatResponse,
+    AgentDecisionResponse, IncomingMessageRequest
 )
 from .agent import LeadQualifierAgent
 
@@ -100,26 +101,10 @@ def create_lead(lead_in: LeadCreate, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(lead)
 
-    # If an initial inquiry message was provided, log it and generate agent greeting
+    # If an initial inquiry message was provided, process and qualify
     if lead_in.initial_message:
-        user_log = ConversationLog(
-            lead_id=lead.id,
-            lead_name=lead.name,
-            sender=SenderType.USER.value,
-            message_text=lead_in.initial_message
-        )
-        db.add(user_log)
-
         agent = LeadQualifierAgent(db)
-        ai_reply = agent.generate_agent_reply(lead.id, lead_in.initial_message)
-        ai_log = ConversationLog(
-            lead_id=lead.id,
-            lead_name=lead.name,
-            sender=SenderType.AI_AGENT.value,
-            message_text=ai_reply
-        )
-        db.add(ai_log)
-        db.commit()
+        agent.process_message(lead.id, lead_in.initial_message)
         db.refresh(lead)
 
     return lead
@@ -134,52 +119,61 @@ def get_lead(lead_id: int, db: Session = Depends(get_db)):
 
 
 # =====================================================================
-# AGENT INTERACTIVE CHAT ENDPOINT
+# AGENT INTERACTIVE CHAT & MESSAGE ENDPOINTS
 # =====================================================================
 @app.post("/api/leads/{lead_id}/chat", response_model=LeadChatResponse)
 def chat_with_agent(
     lead_id: int,
     chat_req: LeadChatRequest,
-    auto_qualify: bool = Query(True, description="Automatically re-evaluate qualification after message"),
+    simulate_llm_failure: bool = Query(False, description="Simulate LLM API failure for testing"),
     db: Session = Depends(get_db)
 ):
-    lead = db.query(Lead).filter(Lead.id == lead_id).first()
-    if not lead:
-        raise HTTPException(status_code=404, detail="Lead not found")
-
-    # 1. Record incoming user message
-    user_log = ConversationLog(
-        lead_id=lead.id,
-        lead_name=lead.name,
-        sender=SenderType.USER.value,
-        message_text=chat_req.message
-    )
-    db.add(user_log)
-    db.commit()
-
-    # 2. Agent generates response
+    """
+    Existing endpoint: engages agent for specific lead_id.
+    Maintains history, evaluates qualifications, matches properties, and returns decision.
+    """
     agent = LeadQualifierAgent(db)
-    agent_reply = agent.generate_agent_reply(lead.id, chat_req.message)
-
-    # 3. Record agent response
-    ai_log = ConversationLog(
-        lead_id=lead.id,
-        lead_name=lead.name,
-        sender=SenderType.AI_AGENT.value,
-        message_text=agent_reply
+    result = agent.process_message(
+        lead_id=lead_id,
+        message=chat_req.message,
+        simulate_llm_failure=simulate_llm_failure
     )
-    db.add(ai_log)
-    db.commit()
-
-    decision = None
-    if auto_qualify:
-        decision = agent.evaluate_lead(lead.id)
-
     return LeadChatResponse(
-        reply=agent_reply,
-        qualification_evaluated=auto_qualify,
-        decision=decision
+        lead_status=result.lead_status,
+        extracted_preferences=result.extracted_preferences,
+        recommended_action=result.recommended_action,
+        priority=result.priority,
+        reasoning=result.reasoning,
+        missing_information=result.missing_information,
+        matched_properties=result.matched_properties,
+        reply=result.reply,
+        qualification_evaluated=True
     )
+
+
+@app.post("/api/message", response_model=AgentDecisionResponse)
+@app.post("/api/chat", response_model=AgentDecisionResponse)
+def handle_incoming_message(
+    incoming: IncomingMessageRequest,
+    simulate_llm_failure: bool = Query(False, description="Simulate LLM API failure for testing"),
+    db: Session = Depends(get_db)
+):
+    """
+    Standard message endpoint for buyer React frontend:
+    {
+      "lead_id": 501,
+      "message": "I need an apartment in Kakkanad for around 80 lakh, within two months."
+    }
+    Retrieves conversation history, processes message with LLM, matches real properties,
+    saves state, and returns full structured decision output.
+    """
+    agent = LeadQualifierAgent(db)
+    result = agent.process_message(
+        lead_id=incoming.lead_id,
+        message=incoming.message,
+        simulate_llm_failure=simulate_llm_failure
+    )
+    return result
 
 
 # =====================================================================
